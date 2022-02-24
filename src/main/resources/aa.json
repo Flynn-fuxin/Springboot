@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "BeginDateWeek": "<b>2022-02-22 星期二</b>",
+      "BeginDate": "09:13",
+      "BeginIP": "10.36.3.232",
+      "BeginRemark": "",
+      "Id": 1011710,
+      "CityName": "深圳",
+      "BuildingName": "高新生态园7栋",
+      "EndDate": "18:36",
+      "Time": "9小时23分",
+      "EndIP": "10.36.3.232",
+      "EndRemark": "",
+      "Remark": ""
+    },
+    {
+      "BeginDateWeek": "2022-02-21 星期一",
+      "BeginDate": "09:16",
+      "BeginIP": "10.36.3.232",
+      "BeginRemark": "",
+      "Id": 1010509,
+      "CityName": "深圳",
+      "BuildingName": "高新生态园7栋",
+      "EndDate": "18:23",
+      "Time": "9小时7分",
+      "EndIP": "10.36.3.232",
+      "EndRemark": "",
+      "Remark": ""
+    },
+    {
+      "BeginDateWeek": "2022-02-20 星期日",
+      "Id": -1,
+      "BeginDate": "休息日",
+      "BeginIP": " ",
+      "CityName": "",
+      "BuildingName": "",
+      "BeginRemark": "",
+      "EndDate": "休息日",
+      "EndIP": " ",
+      "EndRemark": "",
+      "Time": "",
+      "Remark": ""
+    }
+  ]
+}
