@@ -95,7 +95,8 @@ public class PunchJob {
         log.info("=== 上班打卡时间: {} ===", DateUtil.formatDateTime(dateTime));
         Thread.sleep(i*1000*60);
 
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
 
         try {
             MediaType mediaType = MediaType.parse("text/plain");
