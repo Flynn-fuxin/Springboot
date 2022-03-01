@@ -29,8 +29,8 @@ public class PunchJob {
     private RestTemplate restTemplate;
 
     // 周一到周五 早上09:15 运行
-//    @Scheduled(cron = "0 10 9 ? * MON-FRI")
-    @Scheduled(cron = "0/10 * * * * ?")
+    @Scheduled(cron = "0 10 9 ? * MON-FRI")
+//    @Scheduled(cron = "0/10 * * * * ?")˚
     public void demoTimer() throws Exception {
 
         //打卡
