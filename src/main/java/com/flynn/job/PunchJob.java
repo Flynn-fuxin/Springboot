@@ -30,7 +30,7 @@ public class PunchJob {
 
     // 周一到周五 早上09:15 运行
 //    @Scheduled(cron = "0 10 9 ? * MON-FRI")
-//    @Scheduled(cron = "0/2 * * * * ?")、
+    @Scheduled(cron = "0/10 * * * * ?")
     public void demoTimer() throws Exception {
 
         //打卡
@@ -76,6 +76,8 @@ public class PunchJob {
                     .build();
             Response response = client.newCall(request).execute();
             log.info("=== 下班返回结果: === {}", response.body().string());
+            log.info(" ");
+
         } catch (Exception e) {
             log.error(" === 下班打卡失败 ===");
             e.printStackTrace();
@@ -96,25 +98,24 @@ public class PunchJob {
         OkHttpClient client = new OkHttpClient();
 
         try {
-            MediaType mediaType = MediaType.parse("text/x-markdown; charset=utf-8");
+            MediaType mediaType = MediaType.parse("text/plain");
+            RequestBody body = RequestBody.create(mediaType, "");
             Request request = new Request.Builder()
-                    .url("http://om.weoa.com/Attendance/Save?type=begin&city=54&building=206&loginCode=637734291285871168&remark=&method=click")
-                    .post(RequestBody.create("", mediaType))
+                    .url("http://om.weoa.com/Attendance/Save?type=begin&city=54&building=257&loginCode=637817224295108119&remark=&method=click")
+                    .method("POST", body)
                     .addHeader("Connection", "keep-alive")
                     .addHeader("Content-Length", "0")
                     .addHeader("Accept", "application/json, text/plain, */*")
-                    .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36")
+                    .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36")
                     .addHeader("Origin", "http://om.weoa.com")
                     .addHeader("Referer", "http://om.weoa.com/Home")
                     .addHeader("Accept-Language", "zh-CN,zh;q=0.9")
-                    .addHeader("Cookie", "WB_OM_LOGINTICKET=ixeZC%2fL3qbl2KyNicif6NVyjjFMw%2fLttA4lj9B0Q%2brdiViQHqzjkUwBS%2bM3XZ6njjDxSv%2bdKEg5tnHjwU7BBI6kjQ6eX3cYB%2buYxdsnbyTvT8mvPeKBgt%2f3vrEnBswIu8gYoAAWVRHP0YpgIJzFByDzOIlnwjk0r4a3uho9Ra6ecV2ZtD5Fye5cR%2bnmkQ2GFfe0Z20RGc4%2f6qZ%2fxsDUSDxS6w0QtYfUtyqbHPEHkTTuRnJj46c2pW2rS0RlMgqEINNsLnWuCtP5ytN9iR%2fK0E3ZX0e0h9Bjd0%2fvnQmN%2f0ajhONS%2bxUChNLVUsfJfJtui3gD1D6vNZD52lcg%2fQDAXp%2bFTqB1aCkEv6MU%2f%2bwiwBtrdpVrwMikBsPUe%2bQH9xHWp4MZbPMJdXDBzY0sm%2fhL7DrPy7vUXdYIs")
-                    .addHeader("cache-control", "no-cache")
-                    .addHeader("Postman-Token", "c511e6d1-15fb-4814-83e5-9292ff44c0ea")
+                    .addHeader("Cookie", "WB_OM_LOGINTICKET=ixeZC%2fL3qbnsx4iZJ%2bzT9C5VrruNuKQfkry4pxY1L1MXMLNkLVdrkdXp%2fpnIo6JaSBtjfprkQqazWtzXyEQ3kdDKvl5F0JO45Y81E7%2fQuErGwfzQWFqSFZlcPyUxPpj8DkcQR087l%2b%2fx77JZdBCM%2bmLcWbuW3UDkxWCSgFN7bWN4vDoLJjiDH82%2f8aUkRyO40ii%2bSlPHtiyn69ySdQMRn03OKx0bd3iESMAhci%2f0mr8oZvbOKYhq%2f2QpA7zYlreBqllGXDUa1HtPumGWxNW3qJmU%2bhx6VAwPGk7thg376KfhZuBbd7qIM2zidO3d7%2fT932gUwTn%2fR%2b%2b9uFjoG%2bwBicxw5%2btlPE0Oi3TJLD63v4%2f6cRzRSf%2fD5kWZ%2bvMctvFuVUrQugOtfhf%2b7c%2fmlLL9wpmJlv3ip25c")
                     .build();
 
             Response response = client.newCall(request).execute();
             log.info("=== 上班打卡详情返回结果: === {}",response.body().string());
-//            log.info("=== 打卡详情返回结果: === {}");
+
         } catch (Exception e) {
             log.error(" === 上班打卡失败 ===");
             e.printStackTrace();
