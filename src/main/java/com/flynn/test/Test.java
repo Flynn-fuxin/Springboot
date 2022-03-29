@@ -20,6 +20,7 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -87,6 +88,13 @@ public class Test {
         Response response = client.newCall(request).execute();
         System.out.println("response = " + response.body().string());
 
+    }
+
+    @org.junit.Test
+    public void demo(){
+        Date date = new Date();
+        String s = DateUtil.formatDate(date);
+        System.out.println("s = " + s);
     }
 
 
