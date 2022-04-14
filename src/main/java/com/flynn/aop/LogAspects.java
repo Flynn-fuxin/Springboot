@@ -16,15 +16,15 @@ public class LogAspects {
 	//抽取公共的切入点表达式
 	//1、本类引用
 	//2、其他的切面引用
-//	@Pointcut("execution(public int com.flynn.aop.MathCalculator.*(..))")
-//	private void pointCut(){};
+	@Pointcut("execution(public int com.flynn.aop.MathCalculator.*(..))")
+	private void pointCut(){};
 	
-	//@Before在目标方法之前切入；切入点表达式（指定在哪个方法切入）
-	//JoinPoint一定要出现在参数列表的第一位
-//	@Before(value = "pointCut()")
-//	public void logStart(JoinPoint joinpoint) {
-//		System.out.println("切面注解:@Before :logStart>>>> 增强方法:"+joinpoint.getSignature().getName()+"()>>>> 方法参数:"+Arrays.toString(joinpoint.getArgs()));
-//	}
+//	@Before在目标方法之前切入；切入点表达式（指定在哪个方法切入）
+//	JoinPoint一定要出现在参数列表的第一位
+	@Before(value = "pointCut()")
+	public void logStart(JoinPoint joinpoint) {
+		System.out.println("切面注解:@Before :logStart>>>> 增强方法:"+joinpoint.getSignature().getName()+"()>>>> 方法参数:"+Arrays.toString(joinpoint.getArgs()));
+	}
 //
 //	@After(value ="com.flynn.aop.LogAspects.pointCut()")
 //	public void logEnd(JoinPoint joinpoint) {
@@ -42,10 +42,10 @@ public class LogAspects {
 //	}
 
 
-	@After(value ="execution(* com.flynn.aop.MathCalculator.div(..))")
-	public void logEnd(JoinPoint joinpoint) {
-		System.out.println("切面注解:@After  :logEnd>>>>> 增强方法 异常依然会执行:"+joinpoint.getSignature().getName()+"()>>>> 方法参数:"+Arrays.toString(joinpoint.getArgs()));
-	}
+//	@After(value ="execution(* com.flynn.aop.MathCalculator.div(..))")
+//	public void logEnd(JoinPoint joinpoint) {
+//		System.out.println("切面注解:@After  :logEnd>>>>> 增强方法 异常依然会执行:"+joinpoint.getSignature().getName()+"()>>>> 方法参数:"+Arrays.toString(joinpoint.getArgs()));
+//	}
 
 
 }

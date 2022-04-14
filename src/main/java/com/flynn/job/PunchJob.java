@@ -36,28 +36,18 @@ public class PunchJob {
     private RestTemplate restTemplate;
 
     // 周一到周五 早上09:15 运行
-    @Scheduled(cron = "0 10 9 ? * MON-SAT")
+    @Scheduled(cron = "0 10 9 ? * MON-FRI")
 //    @Scheduled(cron = "0/2 * * * * ?")
     public void demoTimer() throws Exception {
-
-        if (PunchUtil.extracted()) {
-            return;
-        }
-
         //签入
         punch();
     }
 
 
     // 周一到周五 早上18:30 运行
-    @Scheduled(cron = "0 30 18 ? * MON-SAT")
+    @Scheduled(cron = "0 30 18 ? * MON-FRI")
 //    @Scheduled(cron = "0/2 * * * * ?")
     public void demoTimerOut() throws Exception {
-
-        if (PunchUtil.extracted()) {
-            return;
-        }
-
         //签出
         checkOut();
     }
