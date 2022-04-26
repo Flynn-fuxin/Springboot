@@ -4,7 +4,6 @@ package com.flynn.dto;
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.HeadStyle;
-import com.flynn.dto.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.poi.ss.usermodel.FillPatternType;

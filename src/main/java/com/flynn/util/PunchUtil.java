@@ -44,10 +44,7 @@ public class PunchUtil {
         System.out.println("s = " + s);
 
         List<String> collect = arrayList.stream().filter(it -> it.equals(s)).collect(Collectors.<String>toList());
-        if (!CollUtil.isEmpty(collect)) {
-            return true;
-        }
-        return false;
+        return !CollUtil.isEmpty(collect);
     }
 
 

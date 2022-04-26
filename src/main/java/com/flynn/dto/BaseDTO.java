@@ -1,5 +1,6 @@
 package com.flynn.dto;
 
+
 /**
  * 　　@Description:
  * 　　@author: v_fuxincao
@@ -7,4 +8,5 @@ package com.flynn.dto;
  * 　　@date: 2021-12-22 15:19
  */
 public class BaseDTO {
+
 }

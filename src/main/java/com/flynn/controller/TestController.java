@@ -13,11 +13,11 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSONObject;
 import com.flynn.dto.User;
 import com.flynn.dto.ExplicitNumberDTO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,24 +36,23 @@ import java.util.Map;
  * 　　@date: 2021-12-16 11:18
  */
 
+@Data
 @RestController
 @RequestMapping("/test/01")
 @Log4j2
+@ResponseBody
 public class TestController {
 
     @RequestMapping(value = "/testmethod", method = RequestMethod.POST)
-    public boolean test(@RequestBody String json, final HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+    public boolean test( final HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
 
         String apikey = "webank_push_task_1";
 
-        Map<String, Object> innerMap = JSONObject.parseObject(json).getInnerMap();
-        // 验证签名时候合法 (可选)
-        String sign = SecureUtil.signParamsSha1(innerMap, apikey);
-        if (sign.equals(httpRequest.getHeader("sign"))) {
-            return true;
-        } else {
-            return false;
-        }
+        System.out.println("apikey = " + apikey);
+
+        System.out.println("apikey = " + apikey);
+
+        return true;
 
     }
 
