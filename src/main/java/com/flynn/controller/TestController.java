@@ -1,9 +1,11 @@
 package com.flynn.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.ZipUtil;
 import cn.hutool.crypto.SecureUtil;
@@ -38,21 +40,17 @@ import java.util.Map;
 
 @Data
 @RestController
-@RequestMapping("/test/01")
+@RequestMapping("/test/02")
 @Log4j2
 @ResponseBody
 public class TestController {
 
-    @RequestMapping(value = "/testmethod", method = RequestMethod.POST)
-    public boolean test( final HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+    @RequestMapping(value = "/sign", method = RequestMethod.POST)
+    public String test(@RequestBody JSONObject jsonObject,@RequestParam("apikey") String  apiKey, final HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
 
-        String apikey = "webank_push_task_1";
+        String sign = getSign(jsonObject);
 
-        System.out.println("apikey = " + apikey);
-
-        System.out.println("apikey = " + apikey);
-
-        return true;
+        return sign;
 
     }
 
@@ -138,5 +136,20 @@ public class TestController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    /**
+     * 参数进行签名
+     *
+     * @param jsonObject
+     * @return
+     */
+    private static String getSign(JSONObject jsonObject) {
+
+        //秘钥 (接口提供方提供)
+        final String key = "ICQ_KBB_XGL";
+
+        Map<String, Object> stringObjectMap = BeanUtil.beanToMap(jsonObject);
+        Map<String, Object> signMap = MapUtil.filter(stringObjectMap, it -> !"roomIds".equals(it.getKey()));
+        return SecureUtil.signParamsSha1(signMap, key);
     }
 }
